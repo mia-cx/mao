@@ -1,6 +1,6 @@
 {
   "name": "mao",
-  "version": "0.1",
+  "version": "0.0.1",
   "description": "mao bot :3",
   "main": "mao.js",
   "scripts": {
@@ -16,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/mia-cx/mao/issues"
   },
-  "homepage": "https://github.com/mia-cx/mao#readme",
+  "homepage": "https://github.com/mia-cx/mao",
+  "dependencies": {
+    "discord.js": "^12.5.3",
+    "opusscript": "0.0.8",
+    "properties-reader": "^2.2.0",
+    "slash-commands": "^1.4.0"
+  }
 }
