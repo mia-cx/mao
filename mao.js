@@ -28,12 +28,22 @@ const moveCommand = {
   ]
 };
 
+let progressMessages = [
+  "playing with yarn... <:maam:602511344134127616>", 
+  "groovin to music... <a:volantsway:585372770481864714>", 
+  "kicking gum and chewing butt... <:tinymao:659180240282714112>",
+  "thinking real hard... <:dacyrgnuh:576886472762851338>",
+  "<:oma:642126674024071169>",
+  "dropped the ball... <a:uhoh:583764964326506528>"
+]
+
 client.on('ready', async () => {
   console.log(`Logged in as ${client.user.tag}!`);
 
   //register moveCommand to Volant server
   await interactions
     .createApplicationCommand(moveCommand)
+    .then(command => console.log(command))
     .catch(console.error);
 
 });
@@ -42,6 +52,8 @@ client.on('ready', async () => {
  * SlashCommand Handler
  */
 client.ws.on('INTERACTION_CREATE', async interaction => {
+
+  let message = progressMessages[Math.floor(Math.random() * progressMessages.length)];
 
   // moveCommand Handler
   if (interaction.data.name === 'move') {
@@ -63,8 +75,10 @@ client.ws.on('INTERACTION_CREATE', async interaction => {
     //let origin know mao is busy :3
     client.api.interactions(interaction.id, interaction.token).callback.post({
       data: {
-        type: 5,
-        content: 'mao is playing with yarn...'
+        type: 4,
+        data: {
+          content: message
+        }
       }
     });
 
@@ -97,13 +111,12 @@ client.ws.on('INTERACTION_CREATE', async interaction => {
           content: 'sorry, you can\'t move people to a text channel <:mao:676486372055580682>'
         }
       });
+      return;
     }
 
-
-
     //move all origin voiceChannel members to target channel
-    origin.voice.channel.members.forEach(member => {
-      member.voice.setChannel(channel);
+    await origin.voice.channel.members.forEach(member => {
+      await member.voice.setChannel(channel);
     });
 
     //let origin know mao is done :3
