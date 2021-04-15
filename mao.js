@@ -90,6 +90,15 @@ client.ws.on('INTERACTION_CREATE', async interaction => {
       return;
     }
 
+    if (channel.isText()) {
+      client.api.webhooks(client.user.id, interaction.token).messages('@original').patch({
+        data: {
+          type: 4,
+          content: 'sorry, you can\'t move people to a text channel <:mao:676486372055580682>'
+        }
+      });
+    }
+
 
 
     //move all origin voiceChannel members to target channel
@@ -101,7 +110,7 @@ client.ws.on('INTERACTION_CREATE', async interaction => {
     client.api.webhooks(client.user.id, interaction.token).messages('@original').patch({
       data: {
         type: 4,
-        content: 'moved all users from your old channel to `' + channel.name + '` <:mao:676486372055580682>'
+        content: 'moved all users from your old channel to `' + channel.name + '` <:coolmao:572166311321534484>'
       }
     });
   }
