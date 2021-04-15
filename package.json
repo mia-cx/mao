@@ -1,0 +1,20 @@
+{
+  "name": "mao",
+  "version": "0.1",
+  "description": "mao bot :3",
+  "main": "mao.js",
+  "scripts": {
+    "start": "node mao.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mia-cx/mao.git"
+  },
+  "keywords": [],
+  "author": "mia.cx",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mia-cx/mao/issues"
+  },
+  "homepage": "https://github.com/mia-cx/mao#readme",
+}
