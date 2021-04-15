@@ -33,7 +33,7 @@ client.on('ready', async () => {
 
   //register moveCommand to Volant server
   await interactions
-    .createApplicationCommand(moveCommand, '559448354199699458')
+    .createApplicationCommand(moveCommand)
     .catch(console.error);
 
 });
