@@ -115,8 +115,8 @@ client.ws.on('INTERACTION_CREATE', async interaction => {
     }
 
     //move all origin voiceChannel members to target channel
-    await origin.voice.channel.members.forEach(member => {
-      await member.voice.setChannel(channel);
+    origin.voice.channel.members.forEach(member => {
+      member.voice.setChannel(channel);
     });
 
     //let origin know mao is done :3
