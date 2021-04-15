@@ -46,32 +46,51 @@ client.ws.on('INTERACTION_CREATE', async interaction => {
   // moveCommand Handler
   if (interaction.data.name === 'move') {
 
-    let origin;
-    let channel;
-
     //define origin (commandsender)
-    await client.guilds
+    let guild = await client.guilds
       .fetch(interaction.guild_id)
-      .then(guild => {
-        guild.members
-          .fetch(interaction.member.user.id)
-          .then(user => origin = user)
-          .catch(console.error)
-      })
+      .catch(console.error);
+
+    let origin = await guild.members
+      .fetch(interaction.member.user.id)
       .catch(console.error);
 
     //define specified channel (target)
-    await client.channels
+    let channel = await client.channels
       .fetch(interaction.data.options[0].value)
-      .then(chnl => channel = chnl)
       .catch(console.error);
 
     //let origin know mao is busy :3
     client.api.interactions(interaction.id, interaction.token).callback.post({
       data: {
         type: 5,
+        content: 'mao is playing with yarn...'
       }
     });
+
+    //permission check
+    if (!origin.hasPermission('MOVE_MEMBERS')) {
+      client.api.webhooks(client.user.id, interaction.token).messages('@original').patch({
+        data: {
+          type: 4,
+          content: 'sorry, you must have the `MOVE_MEMBERS` permission to use this command <:no:565663114394075186>'
+        }
+      });
+      return;
+    }
+
+    //voicestate check
+    if (origin.voice.channel == null) {
+      client.api.webhooks(client.user.id, interaction.token).messages('@original').patch({
+        data: {
+          type: 4,
+          content: 'sorry, you have to be connected to a voice channel to use this command <:omegamao:569482246000476172>'
+        }
+      });
+      return;
+    }
+
+
 
     //move all origin voiceChannel members to target channel
     origin.voice.channel.members.forEach(member => {
@@ -86,7 +105,6 @@ client.ws.on('INTERACTION_CREATE', async interaction => {
       }
     });
   }
-
 })
 
 client.login(token);
