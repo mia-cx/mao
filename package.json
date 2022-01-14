@@ -4,8 +4,8 @@
     "description": "a multi-purpose discord bot, for the volant server",
     "main": "index.mjs",
     "scripts": {
-        "test": "nodemon index.mjs",
-        "start": "node index.mjs"
+        "test": "nodemon index.js",
+        "start": "node index.js"
     },
     "repository": {
         "type": "git",
