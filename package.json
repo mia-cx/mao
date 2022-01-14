@@ -1,0 +1,34 @@
+{
+    "name": "mao",
+    "version": "1.0.0",
+    "description": "a multi-purpose discord bot, for the volant server",
+    "main": "index.mjs",
+    "scripts": {
+        "test": "nodemon index.mjs",
+        "start": "node index.mjs"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/mia-cx/mao.git"
+    },
+    "keywords": [
+        "mao",
+        "discord",
+        "bot",
+        "js"
+    ],
+    "author": "miacx",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/mia-cx/mao/issues"
+    },
+    "homepage": "https://github.com/mia-cx/mao#readme",
+    "dependencies": {
+        "@discordjs/rest": "^0.2.0-canary.0",
+        "discord-api-types": "^0.26.1",
+        "discord.js": "^13.6.0"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.15"
+    }
+}
