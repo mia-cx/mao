@@ -4,6 +4,9 @@
     "description": "a multi-purpose discord bot, for the volant server",
     "main": "index.mjs",
     "scripts": {
+        "postinstall": "npx tsc index.ts",
+        "pretest": "npx tsc index.ts",
+        "prestart": "npx tsc index.ts",
         "test": "nodemon index.js",
         "start": "node index.js"
     },
