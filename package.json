@@ -1,0 +1,35 @@
+{
+    "name": "mao",
+    "version": "1.0.0",
+    "description": "mao is a few-purpose personal discord bot that helps me run/moderate servers",
+    "main": "index.js",
+    "scripts": {
+        "test": "nodemon "
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/mia-cx/mao.git"
+    },
+    "keywords": [
+        "mao",
+        "discord",
+        "bot"
+    ],
+    "author": "miacx",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/mia-cx/mao/issues"
+    },
+    "homepage": "https://github.com/mia-cx/mao#readme",
+    "devDependencies": {
+        "nodemon": "^2.0.15",
+        "typescript": "^4.5.4"
+    },
+    "dependencies": {
+        "@discordjs/rest": "^0.2.0-canary.0",
+        "discord-api-types": "^0.26.1",
+        "discord.js": "^13.6.0",
+        "dotenv": "^12.0.4",
+        "node-eval": "^2.0.0"
+    }
+}
